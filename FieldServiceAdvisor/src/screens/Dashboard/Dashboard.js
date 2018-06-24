@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, Animated } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -11,11 +11,25 @@ class DashboardScreen extends React.Component{
     super(props)
     this.state={
       watson: false,
-      test: "hi",
+      onIssueAnim: new Animated.Value(0),
     }
   }
 
+  onIssueHandler = () => {
+    Animated.timing(this.state.onIssueAnim, {
+      toValue: -936,
+      duration: 100,
+      useNativeDrive: true
+    }).start()
+  }
 
+  dashboardHandler = () => {
+    Animated.timing(this.state.onIssueAnim, {
+      toValue: 0,
+      duration: 100,
+      useNativeDrive: true
+    }).start()
+  }
 
   static navigatorStyle = {
     navBarHidden: true,
@@ -37,10 +51,10 @@ class DashboardScreen extends React.Component{
   render() {
     return(
       <View style={styles.container}>
-        <View>
-          <DashboardMenu />
-        </View>
-        <Sidebar onWatson={this.sourcesHandler}/>
+        <Animated.View style={{left: this.state.onIssueAnim}}>
+          <DashboardMenu onIssueClicked={this.onIssueHandler}/>
+        </Animated.View>
+        <Sidebar onDashboard={this.dashboardHandler} onWatson={this.sourcesHandler}/>
         <WatsonSources onModalClose={this.modalCloseHandler} show={this.state.watson}/>
       </View>
     );

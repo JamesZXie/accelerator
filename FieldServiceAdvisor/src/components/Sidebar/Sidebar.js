@@ -6,7 +6,7 @@ class Sidebar extends React.Component{
   render() {
     return(
       <View style={styles.container}>
-        <TouchableOpacity style={styles.dashIcon}>
+        <TouchableOpacity style={styles.dashIcon} onPress={this.props.onDashboard}>
           <Image source={require('../../assets/Sidebar/dash.png')} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.searchIcon}>

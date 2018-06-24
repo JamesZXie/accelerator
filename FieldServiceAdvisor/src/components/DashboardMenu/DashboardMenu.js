@@ -11,13 +11,13 @@ class DashboardMenu extends React.Component{
         <View style={styles.mainHeader} />
         <View style={styles.subHeader} />
         <View style={styles.menu}>
-          <MenuItem />
-          <MenuItem />
-          <MenuItem />
-          <MenuItem />
-          <MenuItem />
-          <MenuItem />
-          <MenuItem />
+          <MenuItem onIssueClicked={this.props.onIssueClicked}/>
+          <MenuItem onIssueClicked={this.props.onIssueClicked}/>
+          <MenuItem onIssueClicked={this.props.onIssueClicked}/>
+          <MenuItem onIssueClicked={this.props.onIssueClicked}/>
+          <MenuItem onIssueClicked={this.props.onIssueClicked}/>
+          <MenuItem onIssueClicked={this.props.onIssueClicked}/>
+          <MenuItem onIssueClicked={this.props.onIssueClicked}/>
         </View>
         <IssueMap />
       </View>
